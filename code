@@ -1,0 +1,41 @@
+---
+title: "Workshop evaluation"
+output: html_notebook
+---
+```{r}
+setwd("C:/Users/RendelldeKort/Cornerstone Economics/Lay Hing de Kort - CLIENTS/CURRENT CLIENTS/Setar NV")
+```
+
+```{r}
+library(vioplot)
+library(ggplot2)
+```
+
+```{r}
+data <- read.csv("Do_you_speak_data_evaluation.csv")
+```
+1. Purpose communicated clearly
+2. Organized and easy to follow
+3. Presenter exhibited a good understanding of topic
+4. Presenter was well-prepared
+5. Presenter spoke clearly/effectivly
+6. Time for presentation used effectivly
+7. Slides enhanced presentation
+8. Presenter responded effectivley to audience questions
+9. Presentation was done in a way that engaged the audience
+10. The content was usefull for my work
+11. The workshop enhanced my understanding of the topic
+
+```{r}
+p<- ggplot(data, aes(x=factor(question),y=Grade))+
+  geom_violin(fill='#ffffff',
+              color="darkblue")
+p + stat_summary(fun.y=median,
+                 geom="point",
+                 size=2,
+                 color="red") +
+  theme(legend.position="bottom")+ 
+  theme_classic()+
+  xlab("Question (see details below)")+
+  ylab("Rating")
+```
