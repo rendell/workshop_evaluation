@@ -13,6 +13,8 @@ library(ggplot2)
 
 ```{r}
 data <- read.csv("Do_you_speak_data_evaluation.csv")
+data_day1 <-read.csv("evaluation_day1.csv")
+data_day2 <-read.csv("evaluation_day2_sub.csv")
 ```
 1. Purpose communicated clearly
 2. Organized and easy to follow
@@ -27,10 +29,10 @@ data <- read.csv("Do_you_speak_data_evaluation.csv")
 11. The workshop enhanced my understanding of the topic
 
 ```{r}
-p<- ggplot(data, aes(x=factor(question),y=Grade))+
+setar_day<- ggplot(data, aes(x=factor(question),y=Grade))+
   geom_violin(fill='#ffffff',
               color="darkblue")
-p + stat_summary(fun.y=median,
+setar_day + stat_summary(fun.y=median,
                  geom="point",
                  size=2,
                  color="red") +
@@ -38,4 +40,31 @@ p + stat_summary(fun.y=median,
   theme_classic()+
   xlab("Question (see details below)")+
   ylab("Rating")
+
+
+workshop1 <- ggplot(data_day1, aes(x=factor(Question),y=Answer))+
+  geom_violin(fill='#ffffff',
+              color="darkblue")
+workshop1 + stat_summary(fun.y=median,
+                 geom="point",
+                 size=2,
+                 color="red") +
+  theme(legend.position="bottom")+ 
+  theme_classic()+
+  xlab("Question (see details below)")+
+  ylab("Rating")
+
+workshop2 <- ggplot(data_day2, aes(x=factor(Question),y=Answer))+
+  geom_violin(fill='#ffffff',
+              color="darkblue")
+workshop2 + stat_summary(fun.y=median,
+                 geom="point",
+                 size=2,
+                 color="red") +
+  theme(legend.position="bottom")+ 
+  theme_classic()+
+  xlab("Question (see details below)")+
+  ylab("Rating")
+
+
 ```
